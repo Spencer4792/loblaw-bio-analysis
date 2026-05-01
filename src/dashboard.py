@@ -24,12 +24,12 @@ DB_PATH = ROOT / "loblaw_bio.db"
 
 
 st.set_page_config(
-    page_title="Loblaw Bio — Cell Count Dashboard",
+    page_title="Loblaw Bio Cell Count Dashboard",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-st.title("Loblaw Bio — Cell Count Analytics")
+st.title("Loblaw Bio Cell Count Analytics")
 st.caption("Interactive view of the miraclib clinical-trial cell-count data.")
 
 if not DB_PATH.exists():
@@ -146,7 +146,7 @@ with tab_summary:
 
 
 with tab_response:
-    st.subheader("Responders vs non-responders — melanoma PBMC samples on miraclib (Part 3)")
+    st.subheader("Responders vs non-responders, melanoma PBMC samples on miraclib (Part 3)")
 
     long = data["responder_long"]
     if long.empty:
@@ -216,7 +216,7 @@ with tab_baseline:
         st.markdown("**By sex (subjects)**")
         st.dataframe(bd["by_sex"], use_container_width=True, hide_index=True)
 
-    st.subheader("Average B cells — melanoma males, responders, t=0")
+    st.subheader("Average B cells for melanoma males, responders, t=0")
     avg = data["b_cell_mean"]
     if avg is None:
         st.info("No qualifying samples in this database.")

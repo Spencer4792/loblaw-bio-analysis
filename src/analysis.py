@@ -260,7 +260,7 @@ def make_boxplot(long_df: pd.DataFrame, out_path: Path) -> Path:
     ax.set_xticklabels(pops)
     ax.set_ylabel("Relative frequency (%)")
     ax.set_title(
-        "Cell-population frequencies — melanoma PBMC samples on miraclib\n"
+        "Cell-population frequencies, melanoma PBMC samples on miraclib\n"
         "responders (blue) vs non-responders (red)"
     )
     legend = [
