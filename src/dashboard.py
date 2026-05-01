@@ -33,11 +33,18 @@ st.title("Loblaw Bio Cell Count Analytics")
 st.caption("Interactive view of the miraclib clinical-trial cell-count data.")
 
 if not DB_PATH.exists():
-    st.error(
-        f"Database not found at `{DB_PATH.name}`. Run `python load_data.py` "
-        "(or `make pipeline`) before launching the dashboard."
-    )
-    st.stop()
+    csv_path = ROOT / "cell-count.csv"
+    if csv_path.exists():
+        import sys
+        sys.path.insert(0, str(ROOT))
+        from load_data import load as _load_db
+        _load_db(csv_path, DB_PATH)
+    else:
+        st.error(
+            f"Database not found at `{DB_PATH.name}` and cell-count.csv missing. "
+            "Place cell-count.csv at the repo root and reload."
+        )
+        st.stop()
 
 
 @st.cache_data(show_spinner=False)
