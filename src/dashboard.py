@@ -117,13 +117,14 @@ with tab_summary:
     summary = data["summary"]
     summary_filtered = summary[summary["sample"].isin(filtered["sample_id"])]
     st.dataframe(
-        summary_filtered.style.format({
-            "count": "{:,.0f}",
-            "total_count": "{:,.0f}",
-            "percentage": "{:.2f}%",
-        }),
+        summary_filtered,
         use_container_width=True,
         hide_index=True,
+        column_config={
+            "count": st.column_config.NumberColumn(format="%d"),
+            "total_count": st.column_config.NumberColumn(format="%d"),
+            "percentage": st.column_config.NumberColumn(format="%.2f%%"),
+        },
     )
 
     st.download_button(
